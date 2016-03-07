@@ -1,0 +1,225 @@
+import java.util.*; // Import the Util package
+
+/*
+* Hw 3                                       $
+* Convert Positive Integer to Roman Numeral  $
+* Author: Patrick Ly			             $
+* Company: CSULB			                 $
+* Date: 3/6/16			               	     $
+*/
+
+public class romanNumerals {
+
+    public static void main(String[] args) {
+        
+    	// Declare an empty String variable
+        // rN stands for Roman Numeral
+        String rN = "";
+        
+        // Declare an Integer variable
+        int num = 0;
+        
+        // Create a Scanner object
+        Scanner in = new Scanner(System.in);
+
+        // Ask user to enter value for num
+        System.out.print("Please enter an integer number (1-3999) : ");
+
+        // Assign the user's input to num
+        num = in.nextInt();
+
+        // Ask the user for input again if num is an invalid value (num is greater than 3999 or num is negative)
+        while(!(num < 4000) || !(num > 0)){
+        	
+        	// Ask user to enter value for num again
+            System.out.print("Invalid input.");
+            System.out.print("Please enter an integer number (1-3999) : ");
+
+            // Assign the user's input to num
+            num = in.nextInt();
+                  	
+        } // while
+        
+        // Declare an int variable called dNum1000
+        // Divide num by 1000 to determine the thousands place for the Roman Numeral
+        // Assign the integer result to dNum1000
+        
+        int dNum1000 = num/1000; 
+
+        
+        // dNum1000 will be used for a switch expression
+        // This switch case deals with numbers ranging from 1000 to 3999
+        switch(dNum1000){
+        	
+        	case 1: 			// dNum1000 is 1 when num is between 1000 and 1999  
+        		rN  += 	  "M";	// Concatanate rN with "M"
+        		num -= 	 1000;	// Subtract 1000 from num
+        		break;
+        	case 2:				// dNum1000 is 2 when num is between 2000 and 2999  
+        		rN  += 	 "MM";	// Concatanate rN with "MM"
+        		num -=   2000;	// Subtract 2000 from num
+        		break;
+        	case 3:				// dNum1000 is 3 when num is between 3000 and 3999  
+        		rN 	+= 	"MMM";	// Concatanate rN with "MMM"
+        		num -= 	 3000;	// Subtract 3000 from num
+        		break;
+        	default: 			// dNum1000 is not equal to 1, 2, or 3
+        		rN += ""; 		// Concatanate rN with an empty string
+        	
+        }
+        
+      
+        
+     	// Declare an int variable called dNum100
+        // Divide num by 100 to determine the hundreds place for the Roman Numeral
+        // Assign the integer result to dNum100
+        
+        int dNum100 = num/100; 
+
+        
+        // dNum100 will be used for a switch expression
+        // This switch case deals with numbers ranging from 100 to 999
+        switch(dNum100){
+        	
+        	case 1: 			// dNum100 is 1 when num is between 100 and 199  
+        		rN +=    "C";	// Concatanate rN with "C"
+        		num -= 	 100;	// Subtract 100 from num
+        		break;
+        	case 2:				// dNum100 is 2 when num is between 200 and 299  
+        		rN +=   "CC";	// Concatanate rN with "CC"
+        		num -= 	 200;	// Subtract 200 from num
+        		break;
+        	case 3:				// dNum100 is 3 when num is between 300 and 399  
+        		rN +=  "CCC";	// Concatanate rN with "CCC"
+        		num -= 	 300;	// Subtract 300 from num
+        		break;
+        	case 4:				// dNum100 is 4 when num is between 400 and 499
+        		rN +=   "CD";	// Concatanate rN with "CD"
+        		num -= 	 400;	// Subtract 400 from num
+        		break;
+        	case 5:				// dNum100 is 5 when num is between 500 and 599
+        		rN +=    "D";	// Concatanate rN with "D"
+        		num -= 	 500;	// Subtract 500 from num
+        		break;
+        	case 6:				// dNum100 is 6 when num is between 600 and 699
+        		rN +=   "DC";	// Concatanate rN with "DC"
+        		num -= 	 600;	// Subtract 600 from num
+        		break;
+        	case 7:				// dNum100 is 7 when num is between 700 and 799
+        		rN +=  "DCC";	// Concatanate rN with "DCC"
+        		num -= 	 700;	// Subtract 700 from num
+        		break;
+        	case 8:				// dNum100 is 8 when num is between 800 and 899
+        		rN += "DCCC";	// Concatanate rN with "DCCC"
+        		num -=   800;	// Subtract 800 from num
+        		break;
+        	case 9:				// dNum100 is 9 when num is between 900 and 999
+        		rN +=   "CM";	// Concatanate rN with "CM"
+        		num -= 	 900;	// Subtract 900 from num
+        		break;
+        	default: 			// dNum100 is not equal to 1, 2, 3, 4, 5, 6, 7, 8, and 9
+        		rN += ""; 		// Concatanate rN with an empty string
+        	
+        }
+        
+      
+        // Declare an int variable called dNum10
+        // Divide num by 10 to determine the tens place for the Roman Numeral
+        // Assign the integer result to dNum10
+        
+        int dNum10 = num/10; 
+        
+        // dNum10 will be used for a switch expression
+        // This switch case deals with numbers ranging from 10 to 99
+
+        switch(dNum10){
+        
+        	case 1:				// dNum10 is 1 when num is between 10 and 19  
+        		rN 	+= "X";		// Concatanate rN with "X"
+        		num -=  10;		// Subtract 10 from num
+        		break;
+        	case 2:				// dNum10 is 2 when num is between 20 and 29  
+        		rN += "XX";		// Concatanate rN with "XX"
+        		num -=  20;		// Subtract 20 from num
+        		break;
+        	case 3:				// dNum10 is 3 when num is between 30 and 39  
+        		rN += "XXX";	// Concatanate rN with "XXX"
+        		num -=  30;		// Subtract 30 from num
+        		break;
+        	case 4:				// dNum10 is 4 when num is between 40 and 49
+        		rN += "XL";		// Concatanate rN with "XL"
+        		num -=  40;		// Subtract 40 from num
+        		break;
+        	case 5:				// dNum10 is 5 when num is between 50 and 59
+        		rN += "L";		// Concatanate rN with "L"
+        		num -=  50;		// Subtract 50 from num
+        		break;
+        	case 6:				// dNum10 is 6 when num is between 60 and 69
+        		rN += "LX";		// Concatanate rN with "LX"
+        		num -=  60;		// Subtract 60 from num
+        		break;
+        	case 7:				// dNum10 is 7 when num is between 70 and 79
+        		rN += "LXX";	// Concatanate rN with "LXX"
+        		num -=  70;		// Subtract 70 from num
+        		break;
+        	case 8:				// dNum10 is 8 when num is between 80 and 89
+        		rN += "LXXX";	// Concatanate rN with "LXXX"
+        		num -=  80;		// Subtract 80 from num
+        		break;
+        	case 9:				// dNum10 is 9 when num is between 90 and 99
+        		rN += "XC";		// Concatanate rN with "XC"
+        		num -=  90;		// Subtract 90 from num
+        		break;
+        	default: 			// dNum10 is not equal to 1,2, 3, 4, 5, 6, 7, 8, and 9
+        		rN += ""; 		// Concatanate rN with an empty string
+        	
+        }
+        
+        
+  
+        // Use num to determine the ones place for the Roman Numeral
+        // num will be used for a switch expression
+        // This switch case deals with numbers ranging from 1 to 9
+
+        switch(num){
+        
+        	case 1:				// num is 1  
+        		rN 	+=   "I";	// Concatanate rN with "I"	
+        		break;
+        	case 2:				// num is 2  
+        		rN +=   "II";	// Concatanate rN with "II"	
+        		break;
+        	case 3:				// num is 3  
+        		rN +=  "III";	// Concatanate rN with "III"	
+        		break;
+        	case 4:				// num is 4
+        		rN +=   "IV";	// Concatanate rN with "IV"		
+        		break;
+        	case 5:				// num is 5
+        		rN +=    "V";	// Concatanate rN with "V"       	
+        		break;
+        	case 6:				// num is 6
+        		rN +=   "VI";	// Concatanate rN with "VI"	
+        		break;
+        	case 7:				// num is 7 
+        		rN +=  "VII";	// Concatanate rN with "VII"		
+        		break;
+        	case 8:				// num is 8
+        		rN += "VIII";	// Concatanate rN with "VIII"
+        		break;
+        	case 9:				// num is 9
+        		rN +=   "IX";	// Concatanate rN with "IX"
+        		break;
+        	default: 			// num is not equal to 1,2, 3, 4, 5, 6, 7, 8, and 9
+        		rN += ""; 	    // Concatanate rN with an empty string
+        	
+        }
+        
+       
+        // Final output for Roman Numeral
+        System.out.println(rN); 
+        
+        
+    } // main
+
+} // class
